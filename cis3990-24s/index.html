@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Mobile and IoT Computing</title>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<!-- Custom styles for this template -->
+	<link href="css/styles.css" rel="stylesheet">
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+</head>
+
+
+<body id="main">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-penn-blue">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="index.html#main">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#overview">Course Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#schedule">Course Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#Labs">Labs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</nav>
+
+    <div class="container" style="padding-top: 20px, padding-bottom: 20px">
+		<div class="section">
+            <p/>
+            <h1 style="font-size: 32px">CIS 7000 (Fall 2023): Mobile and IoT Computing</h1>
+            <p/>
+            <div><span class="title">Instructor:</span> <a href="https://www.cis.upenn.edu/~mingminz/">Mingmin Zhao</a></div>
+            <div><span class="title">Lecture:</span> Monday & Wednesday 1:45 - 3:15 PM @ Towne 303</div>
+            <div><span class="title">Office Hour: </span> Monday 3:15 - 4:15 PM @ Levine 503</div>
+            <p/>
+		</div>
+    </div>
+
+    <div class="container">
+        <h5 id="overview">Course Overview</h5>
+        <p>The convergence of mobile computing, Internet of Things (IoT), and artificial intelligence (AI) is revolutionizing how we interact with the world increasingly driven by data. This course is designed to provide a deep understanding of the foundational principles of mobile computing and IoT, with a focus on acquiring, processing, and utilizing data to provide insights and control actions in the environment.<p/>
+
+        <p>The course covers key topics such as sensor fusion, data integration, signal processing, machine learning, and on-device or “edge” computation, which are essential for developing intelligent systems that can sense, interpret, and respond to the world around us. It will also explore various applications of these principles across diverse domains such as digital health, human-machine interaction, virtual reality, autonomous vehicles, environmental science, and agriculture.</p>
+
+        <p>Throughout the course, students will engage in discussions on recent research articles that present innovative designs, algorithms, and applications for mobile and IoT computing. The course also includes a semester-long course project, where students will have the opportunity to design and build an intelligent system that leverages the principles of mobile computing and IoT to address a real-world problem.</p>
+    </div>
+    <br>
+
+    <div class="container" style="padding-bottom: 10px;">
+        <h5 id="grading">Grading Policy</h5>
+        This class will be graded as follows:
+        <ul>
+            <li>1+4 iOS Labs (25%)</li>
+            <li>Course Project (50%)</li>
+            <li>Participation (25%)</li>
+            <ul>
+                <li>Paper review before each lecture (may skip one without affecting grade)</li>
+                <li>Discussion during the lecture</li>
+                <li>Attendance is mandatory</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h5 id="grading">Reading Questions</h5>
+        We will be reviewing and discussing research papers during each lecture. Please read the assigned papers (one for each lecture) before the class and answer the reading questions by the midnight the night before the class (i.e., Sunday 11:59 PM for a Monday lecture and Tuesday 11:59 PM for a Wednesday lecture). Please submit your answers <a class="material" target="_blank" href="https://forms.gle/LyvcmTGiKEh2R72v6">here</a>.
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="Labs">iOS Labs</h5>
+        The class contains 5 labs. They will involving programming for iPhones or iPads in XCode, which requires a Mac for development. We will help loan out Macs and iPads to students who do not have them.
+        <ul>
+            <li><a href="lab0/index.html">Lab 0</a>: Get familiar with Xcode IDE and develop an OpenWeather API</li>
+            <li><a href="lab1/index.html">Lab 1</a>: Develop Location API and explore the power drain vs accuracy trade-off</li>
+            <!-- <li><a href="lab2/index.html">Lab 2</a>: Develop Anteater app to scan for a nearby Anthill, connect to it, and stream temperature and humidity readings from it</li> -->
+            <li><a href="lab2/index.html">Lab 2</a>: Build a handwriting (2D) and gesture (3D) recognition system</li>
+            <li><a href="lab3/index.html">Lab 3</a>: Detect distance through FMCW signal on laptop</li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="schedule">Course Schedule and Materials</h5>
+        <div><span class="title">Note:</span> the schedule below is tentative and subject to change. Please check it regularly.</div>
+
+        <table class="table table-bordered" border="1" style="font-size: 85%">
+            <thead class="bg-penn-blue">
+                <tr>
+                    <th style="width: 2%">#</th>
+                    <th style="width: 10%">Date</th>
+                    <th style="width: 34%">Topic</th>
+                    <th style="width: 27%">Assigned Reading</th>
+                    <th style="width: 27%">Reading Questions</th>
+                    <th style="width: 27%">Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table">
+                    <td>1</td>
+                    <td>Wed, Aug 30</td>
+                    <td style="text-align: left;">Course introduction & overview</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a class="material" href="slides/lec1-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table-success">
+                    <td></td>
+                    <td>Mon, Sep 4</td>
+                    <td colspan="4">No Class: Labor Day</td>
+                </tr>
+
+                <tr class="table">
+                    <td>2</td>
+                    <td>Wed, Sep 6</td>
+                    <td style="text-align: left;">Fundamentals of Localization</td>
+                    <td>
+                        <a class="material" href="https://upenn.alma.exlibrisgroup.com/view/action/uresolver.do?operation=resolveService&package_service_id=51515604840003681&institutionId=3681&customerId=3680&VE=true">Chap 6: Fundamentals of Positioning,
+                        </a>
+                        <a class="material" href="https://en.wikipedia.org/wiki/Global_Positioning_System">Wikipedia: GPS.
+                        <br>
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question1" role="button" aria-expanded="false" aria-controls="question1">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question1">
+                            <div class="card card-body">
+                                </p>
+                                (1) What is more privacy-preserving: network-based or terminal-based positioning (according to the taxonomy in Fig. 6-2)? Explain in 1 sentence.
+                                </p>
+                                (2) Is GPS the former or the latter?
+                                </p>
+                                (3) How does a GPS receiver distinguish between the signals received from different satellites?
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="material" href="slides/lec2-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table">
+                    <td>3</td>
+                    <td>Mon, Sep 11</td>
+                    <td style="text-align: left;">Device-based Localization (Indoor & Outdoor)</td>
+                    <td>
+                        <a class="material" href="papers/cricket.pdf">Cricket,
+                        </a>
+                        <a class="material" href="papers/radar.pdf">RADAR (optional).
+                        <br>
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question2" role="button" aria-expanded="false" aria-controls="question2">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question2">
+                            <div class="card card-body">
+                                </p>
+                                Classify the Cricket location system according to the taxonomy of the Positioning reading (Figure 6.2 from Chapter 6 of LBS). Is it terminal-based or network-based? Is it integrated or stand-alone?
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="material" href="slides/lec3-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table">
+                    <td>4</td>
+                    <td>Wed, Sep 13</td>
+                    <td style="text-align: left;">Device-Free Localization & Seeing Through Walls</td>
+                    <td>
+                        <a class="material" href="papers/witrack.pdf">WiTrack
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question3" role="button" aria-expanded="false" aria-controls="question3">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question3">
+                            <div class="card card-body">
+                                </p>
+                                (1) In WiTrack, how does FMCW compute the time of flight?
+                                (2) List 2 advantages and 2 disadvantages for WiTrack over the RADAR paper.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="material" href="slides/lec4-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table-warning">
+                    <td></td>
+                    <td>Sun, Sep 17</td>
+                    <td colspan="4">Lab 0 Due: 11:59 PM</td>
+                </tr>
+
+                <tr class="table">
+                    <td>5</td>
+                    <td>Mon, Sep 18</td>
+                    <td style="text-align: left;">Network Connectivity</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a class="material" href="slides/lec5-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table">
+                    <td>6</td>
+                    <td>Wed, Sep 20</td>
+                    <td style="text-align: left;">Mesh and Multi-Hop Wireless Networks</td>
+                    <td>
+                        <a class="material" href="papers/etx.pdf">ETX
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question4" role="button" aria-expanded="false" aria-controls="question4">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question4">
+                            <div class="card card-body">
+                                </p>
+                                Suppose we want to send data from node S to node T in a multi-hop wireless network. The probability of successfully receiving an ACK for a packet sent from S to T directly is q. The other choice is to use an intermediate node, N; the probability of successfully receiving an ACK for a packet from S to N is p, the same as the probability of successfully receiving an ACK for a packet sent from N to T. Using ETX, under what conditions would the direct link from S to T be preferred to the path S — N — T?
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="material" href="slides/lec6-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table-success">
+                    <td></td>
+                    <td>Mon, Sep 25</td>
+                    <td colspan="4">Class cancelled</td>
+                </tr>
+
+
+                <tr class="table">
+                    <td>7</td>
+                    <td>Wed, Sep 27</td>
+                    <td style="text-align: left;">Batteryless Connectivity & Smart Cities</td>
+                    <td>
+                        <a class="material" href="papers/caraoke.pdf">Caraoke (without sec. 8)
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question4" role="button" aria-expanded="false" aria-controls="question4">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question4">
+                            <div class="card card-body">
+                                </p>
+                                How does Caraoke count cars when multiple E-toll transponders respond at the same time?
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a class="material" href="slides/lec7-slides.pdf">slides</a>
+                    </td>
+                </tr>
+
+                <tr class="table-warning">
+                    <td></td>
+                    <td>Sun, Oct 1</td>
+                    <td colspan="4">Lab 1 Due: 11:59 PM</td>
+                </tr>
+
+                <tr class="table">
+                    <td>8</td>
+                    <td>Mon, Oct 2</td>
+                    <td style="text-align: left;">Inertial Sensing & Activity Recognition</td>
+                    <td>
+                        Inertial Navigation System
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="table">
+                    <td>9</td>
+                    <td>Wed, Oct 4</td>
+                    <td style="text-align: left;">Pothole detection</td>
+                    <td>
+                        <a class="material" href="papers/potholepatrol.pdf">Pothole Patrol
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question5" role="button" aria-expanded="false" aria-controls="question5">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question5">
+                            <div class="card card-body">
+                                </p>
+                                A simple method to detect potholes would be to look at time windows during which the absolute magnitude of the acceleration vector is above some threshold. This will lead to a number of false positives, as described in the paper. After reading the paper, list two sources of such false positives, and how the paper proposes to address them.
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+
+
+                <tr class="table">
+                    <td>10</td>
+                    <td>Mon, Oct 9</td>
+                    <td style="text-align: left;">Crash Mapping</td>
+                    <td>
+                        <a class="material" href="papers/crashmapping.pdf">Crash Mapping
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question6" role="button" aria-expanded="false" aria-controls="question6">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question6">
+                            <div class="card card-body">
+                                </p>
+                                (1) Why can't we build robust crash rate models by simply using the locations of prior crashes alone?
+                                (2) What key inputs does the paper use to build crash rate maps?
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table">
+                    <td>11</td>
+                    <td>Wed, Oct 11</td>
+                    <td style="text-align: left;">Health & Vitals sensing</td>
+                    <td>
+                        <a class="material" href="papers/vitalradio.pdf">Vital Radio
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question7" role="button" aria-expanded="false" aria-controls="question7">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question7">
+                            <div class="card card-body">
+                                </p>
+                                We learned that WiTrack's accuracy is about 10cm. Further, we learned that the resolution of FMCW is C/2B, where C is the speed of light and B is the bandwidth. VitalRadio uses the same FMCW radio that WiTrack uses. So how is it possible for VitalRadio to measure movements as small as the chest inhale-exhale motion?
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-warning">
+                    <td></td>
+                    <td>Sun, Oct 15</td>
+                    <td colspan="4">Lab 2 Due: 11:59 PM</td>
+                </tr>
+
+                <tr class="table">
+                    <td>12</td>
+                    <td>Mon, Oct 16</td>
+                    <td style="text-align: left;">ML for Wireless Sensing & Sleep Staging</td>
+                    <td>
+                        <a class="material" href="papers/rfsleep.pdf">RF-Sleep
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question8" role="button" aria-expanded="false" aria-controls="question8">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question8">
+                            <div class="card card-body">
+                                </p>
+                                How would you build on top of RF-Sleep to track the sleep stages of two individuals sharing the same bed?
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table">
+                    <td></td>
+                    <td>Wed, Oct 18</td>
+                    <td style="text-align: left;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <!-- <tr class="table-success">
+                    <td></td>
+                    <td>Mon, Mar 6</td>
+                    <td colspan="3" rowspan="2">Spring Break</td>
+                </tr>
+
+                <tr class="table-success">
+                    <td></td>
+                    <td>Mon, Mar 8</td>
+                </tr> -->
+
+                <tr class="table-warning">
+                    <td></td>
+                    <td>Sun, Oct 22</td>
+                    <td colspan="4">Project Proposal &nbsp;&nbsp;Due: 11:59 PM</td>
+                </tr>
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Oct 23</td>
+                    <td colspan="4">Project Proposal Discussion</td>
+                </tr>
+
+                <tr class="table">
+                    <td>13</td>
+                    <td>Wed, Oct 25</td>
+                    <td style="text-align: left;">Through-Wall Vision</td>
+                    <td>
+                        <a class="material" href="papers/rfpose.pdf">RF-Pose, <a class="material" href="papers/rfpose3D.pdf">RF-Pose3D
+                    </td>
+                    <td>
+                        <a class="btn-sm" data-toggle="collapse" href="index.html#question9" role="button" aria-expanded="false" aria-controls="question9">
+                            Questions
+                        </a>
+                        <div class="collapse" id="question9">
+                            <div class="card card-body">
+                                </p>
+                                (1) Can you explain the top-down and bottom-up approaches to human pose estimation in 2-3 sentences?
+                                (2) Would you categorize RF-Pose and RF-Pose3D as following a top-down or bottom-up approach?
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-warning">
+                    <td></td>
+                    <td>Sun, Oct 29</td>
+                    <td colspan="4">Lab 3 Due: 11:59 PM</td>
+                </tr>
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Oct 30</td>
+                    <td colspan="4">Project Progress Discussion</td>
+                </tr>
+
+                <tr class="table">
+                    <td>14</td>
+                    <td>Wed, Nov 1</td>
+                    <td style="text-align: left;">Attacks on Acoustic Sensing</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Nov 6</td>
+                    <td colspan="4">Project Progress Discussion</td>
+                </tr>
+
+                <tr class="table">
+                    <td>15</td>
+                    <td>Wed, Nov 8</td>
+                    <td style="text-align: left;">Agriculture IoT</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Nov 13</td>
+                    <td colspan="4">Project Progress Discussion</td>
+                </tr>
+
+                <tr class="table">
+                    <td>16</td>
+                    <td>Wed, Nov 15</td>
+                    <td style="text-align: left;">Ocean IoT</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Nov 20</td>
+                    <td colspan="4">Project Progress Discussion</td>
+                </tr>
+
+                <tr class="table-success">
+                    <td></td>
+                    <td>Wed, Nov 22</td>
+                    <td colspan="4">No Class: Friday Class Schedule on Wednesday</td>
+                </tr>
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Nov 27</td>
+                    <td colspan="4">Project Progress Discussion</td>
+                </tr>
+
+                <tr class="table">
+                    <td>17</td>
+                    <td>Wed, Nov 29</td>
+                    <td style="text-align: left;">TBD</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Dec 4</td>
+                    <td colspan="4">Project Progress Discussion</td>
+                </tr>
+
+                <tr class="table">
+                    <td>18</td>
+                    <td>Wed, Dec 6</td>
+                    <td style="text-align: left;">TBD</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+                <!-- December 11 is the last day of classed in upenn calender -->
+                <tr class="table-primary">
+                    <td></td>
+                    <td>Mon, Dec 11</td>
+                    <td colspan="4">Final Project Presentations</td>
+                </tr>
+
+                <tr class="table-warning">
+                    <td></td>
+                    <td>Sun, Dec 17</td>
+                    <td colspan="4">Final Project Report &nbsp;&nbsp;Due: 11:59 PM</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <br>
+    <br>
+	<div class="container">
+        <div class="section">
+            <hr>
+            <footer style="text-align: center;">
+            <span>&copy; Mingmin Zhao 2023</span>
+            <br>
+            </footer>
+        </div>
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<!-- Placed at the end of the document so the pages load faster -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+</body>
+
+</html>

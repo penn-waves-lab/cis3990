@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>CIS7000 Lab 3</title>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<!-- Custom styles for this template -->
+	<link href="css/styles.css" rel="stylesheet">
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <!-- For math function -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+
+
+<body id="main">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-penn-blue">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="../index.html">CIS7000</a>
+            <a class="navbar-brand js-scroll-trigger" href="index.html#main">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav ml-auto">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#installation">Installation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#sec1">Section 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#sec2">Section 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="index.html#submission">Submission Instructions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</nav>
+
+    <div class="container" style="padding-top: 20px, padding-bottom: 20px">
+		<div class="section">
+            <p/>
+            <h1 style="font-size: 32px">Lab 4</h1>
+            <p/>
+            <p>The goal of this lab is to implement code in Jupyter Notebook to detect human gestures via sound signals. We have provided you with all of the code to show the processed outcome (eg spectrograms, plots etc.), but you will need to implement some parts of the FMCW background subtraction code to be able to visualize human gestures.</p>
+            <p>This lab is based on an MIT 6.808 project in Spring 2021 by Cooper Jones, Willie Zhu and Jan Wojcik.</p>
+            <p>Start by downloading the <a href="lab3.ipynb.zip">iPython code</a> for this lab.</p>
+            <p> <strong>Known problem: </strong>Do not use Google Colab to run the .ipynb. The PortAudio library cannot be used in Colab.</p>
+		</div>
+    </div>
+
+    <div class="container">
+        <h5 id="installation">Installation</h5>
+        <p>Start by <a href="https://www.anaconda.com/">downloading the Anaconda software</a>. After installing, open the Anaconda Navigator and click on launch for Jupyter Notebook. It should open in Chrome. Create a new directory called “Lab_3_FMCW” and upload the “Gesture Recognition via FMCW.ipynb” notebook file in that directory. Open the file and you should be able to build and run the different code blocks in the file. Specifically, click on the box under “Initialization” then click “Run”. Do the same thing for the box under “Filter Functions”. Now that you have initialized the functions, you are ready to implement the code for the lab.</p>
+        <p> For those unfamiliar with .ipynb, order in which you run the cells matter, so be aware when going back through different parts of this notebook (as in section 2)</p>
+        <p>Read this <a href="https://en.wikipedia.org/wiki/Continuous-wave_radar">link</a> before you begin lab3. And make sure you understand the following questions</p>
+        <ul>
+            <li> What is FMCW? How does it work to detect distance and speed?</li>
+            <li> What is the doppler effect?</li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec1">Section 1 — Recording and processing FMCW Signals</h5>
+        <p>The goal of this section is to successfully obtain spectrograms from the recorded FMCW signals. In the next section you will extract gestures using these spectrograms.</p>
+        <p>The basic sequence is as follows:</p>
+        <ol>
+            <li>Simultaneously transmit and receive FMCW (i.e, chirp) signals from your laptop</li>
+            <li> Multiply the received FMCW chirp with the transmitted FMCW chirp, for each chirp you should see a peak in the baseband</li>
+            <li>Pass the output of the multiplication through a low pass filter</li>
+            <li>Extract the peak and convert it to distance using the slope of the FMCW chirp and the speed of sound</li>
+            <li>Record distance estimates from different chirps and plot them as a function of time</li>
+            <li>Observe how the plot changes with different gestures.</li>
+        </ol>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec1.1">Section 1.1: Transmit and receive a single tone</h5>
+        <p>Before you can start transmitting and receiving FMCW chirp signals, you need to know how to transmit a single frequency, what it sounds like, what it looks like in the time and frequency domains, and what its spectrogram looks like.</p>
+        <p>To do this you will need to implement the  “play_and_record” function. Given a  frequency, sampling rate, and duration as input, this function should play the corresponding sound (using the speaker) and record it (using the microphone); it should also return the recorded sound.</p>
+        <p>You should write code to do the following:</p>
+        <ol>
+            <li>Create the time domain signal x of frequency. It is a single tone (or frequency), i.e., a single sine or cosine wave.</li>
+            <li>Play that sound and record it. You can use "y = sd.playrec(x)" to play the signal x, which will be recorded by the microphone and stored in array y.</li>
+            </ol>
+        <p>Once you have successfully implemented this function, execute the code that comes after the function definition. You should hear a loud 10kHz tone for 2 seconds. When you run the following code blocks, you should be able to see what the signal looks like in time and frequency and what the spectrogram of the signal looks like. </p>
+        <p><strong>Known issue for Mac Laptops: </strong> When running the “sd.playrec()” command, Google Chrome might ask for permission to get access to the microphone, please give access when you get this message otherwise, this command will only play the sound but it will not record it. If you didn’t give access then you will need to go to microphone settings in Mac and there you can give microphone access to Chrome.</p>
+        <p>Once everything is working fine, you should run subsequent blocks to see the received signal in the time domain, frequency domain, and the spectrogram.</p>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec1.2">1.2 Implement stopRecordingLocationWithAccuracy</h5>
+        <p>stopRecordingLocationWithAccuracy just needs to call stopUpdatingLocation on the CLLocationManager object. (It's OK to call this function on the CLLocationManager even if it is already stopped.)</p>
+        <p>Check function <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423695-stopupdatinglocation">stopUpdatingLocation()</a>.</p>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec1.2">Section 1.2: Transmit and receive a FMCW chirp</h5>
+        <p>In this task, you will transmit and record a FMCW chirp signal. To do this you will need to implement the "play_and_record_chirp" function. Specifically you need to do the following:
+        </p>
+        <ol>
+            <li>Create a chirp signal using  the "chirp(t,f0=x,f1=x,t1=x,method='linear').astype(np.float32)" command where t is the time vector for your chirp, f0 and f1 are the starting and ending frequencies of your chirp, t1 is the chirp duration, and "method" tells you how the frequency should change as a function of time.</li>
+            <li>Create a variable which has multiple repetitions of this chirp so that the total duration of the signal matches “total_duration”.</li>
+            <li>Play that sound and record it. You can use "rx = sd.playrec(tx)" to play the signal tx, which will be recorded by the microphone and stored in array rx</li>
+        </ol>
+        <p><strong>Note: </strong>If the microphone is not able to record a good signal, try increasing the amplitude of your transmitted signal (tx) by scaling the entire signal by a constant factor i.e. 500 or 100</p>
+        <p>After you have successfully implemented this function, run the subsequent block. You should hear a periodic sweep from your speakers.</p>
+        <p>Subsequent code blocks do the following:</p>
+        <ol>
+            <li> Segment the transmitted and received FMCW signal into small chunks so that each chunk contains one FMCW chirp signal, this segmented data is stored as an array in “rx_data “and “tx_data”</li>
+            <li>Plots the FFT (frequency domain representation) of the first segment , i.e “rx_data_sample”</li>
+            <li>Mixes the first segment with the transmitted FMCW segment and plots the FFT of the mixed signal i.e. “multiplied_fft”  (you should see a peak here below 5000 Hz)</li>
+            <li>Filters the mixed signal using a low pass filter, plots the FFT again and obtains the peak location (stored in “peak_location”)</li>
+            <li> Repeats the same steps for all segments (“all_multiplied” and “all_multiplied_ffts”) and shows how the spectrogram looks like for different consecutive segments.</li>
+        </ol>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec2">Section 2 — Extracting gestures from FMCW signals</h5>
+        <p>Notice that the spectrograms look relatively similar. In this section, we will see how performing background subtraction allows us to track movements in the environment.</p>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec2.1">Section 2.1: Implement <code>background_subtract</code></h5>
+        <p>In this task you will perform background subtraction from the received FMCW chirp signals. To do this you need to implement the background_subtract function that takes in a series of mixed chirp segment FFTs (i.e. all_multiplied_ffts) as input. Specifically you need to do the following:</p>
+        <ol>
+            <li> Subtract consecutive mixed chirp signal segments in the frequency domain (i.e subtract consecutive segments in “all_multiplied_ffts”)</li>
+            <li>Return the segmented array after subtraction</li>
+        </ol>
+        <p>Subsequent code blocks do the following:
+        <ol>
+            <li>  Get the peak locations for all of the segments and obtain the median peak location</li>
+            <li>Use the median peak location to zoom in on the subtracted FFTs (output of “background_subtract()”) and store it in subtracted_filtered</li>
+            <li>Plots the spectrogram of the zoomed in subtracted FFT</li>
+            <li>Get the peak location in the subtracted FFT segments and plot them (stored in “argmaxes”)</li>
+        </ol>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec2.2">Section 2.2: Implement <code>idx_to_distance</code></h5>
+        <p>In this task you will estimate the distance using the peak location. To do this you need to implement the “idx_to_distance” function which takes the peak location as input. Specifically you need to do the following:</p>
+        <ol>
+            <li> Implement the following equation: <p>𝑑𝑖𝑠𝑡𝑎𝑛𝑐𝑒=(Δ𝑓.𝑠𝑙𝑜𝑝𝑒.𝑣)/2</p>
+            <p>where "v" is the speed of sound in air, "slope" is the slope of your FMCW chirp and " Δ𝑓 " corresponds to the peak location.</p></li>
+            <li>Store the result in the “distance” variable and return it as an output of the function.</li>
+        </ol>
+        <p><strong> Hint: </strong>The index of the peak is not equal to  Δ𝑓  because it is not in Hz, how can you convert it to Hz?</p>
+        <p>Once you have successfully implemented this function, and if you run the next code block. It should plot the distance variation as a function of time. </p>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="sec2.2">Section 2.3: Recording Gestures</h5>
+        <p>In this task, you will record different hand gestures. To do this, run the code for Task 1.2 again but this time while the chirp sound is playing, do the following separately:</p>
+        <ol>
+            <li> Move your hand up, bring it down, and then move it back up</li>
+            <li>Slowly move your hand up and down 4-5 times</li>
+        </ol>
+        <p>For each case your hand movement should be aligned with the direction of the sound.</p>
+        <ul>
+            <li> Run all subsequent code blocks and take a screenshot of the plot titled “After background subtraction”, do this for both gestures separately (2 plots)</li>
+            <li>Run all subsequent code blocks until the very end and take a screenshot of the distance vs time plot, do this for both gestures separately (2 plots)</li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="container">
+        <h5 id="submission">Submission Instructions</h5>
+        <p>Write up your answers to the following items in a single PDF file and name it <strong>lab3_${pennkey}.pdf</strong> or <strong>lab3_${pennkey}+${pennkey}.pdf</strong>. If you work with a partner, you only have to submit once.</p>
+        <ol type="1">
+        <li>Names and Penn emails (including your lab partner, if available)</li>
+        <li>In the plot entitled “Frequency Domain - Recieved FMCW signal”, why does the output look the way it does?</li>
+        <li>In the plot entitled “Frequency Domain - Downconverted FMCW signal”, why is there a single lower-frequency peak? What does this peak correspond to?</li>
+        <li>Attach a screenshot of:
+            <ol type="1">
+                <li>The spectrogram </li>
+                <li>The distance vs time plot</li>
+            </ol>
+            <p> Do this for both movement patterns (i.e., 4 plots in total)</p>
+        </li>
+        <li>Estimated number of hours you spent on this lab per person.</li>
+        </ol>
+        <p>Bonus questions (Optional for extra credit) </p>
+        <ol>
+        <li>Why do we need to send a whole sweep (with a time interval of T) to estimate the gesture, why cant we just send two frequencies that are spaced by T seconds?</li>
+        <li>Why do we need to subtract the first strongest peak from the remaining peaks to get the distance variation?</li>
+        </ol>
+    </div>
+    <br>
+
+
+	<div class="container">
+        <div class="section">
+            <hr>
+            <br>
+            </footer>
+        </div>
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<!-- Placed at the end of the document so the pages load faster -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+</body>
+
+</html>
