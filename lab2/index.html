@@ -18,7 +18,11 @@
     <!-- For math function -->
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-        </script>
+    </script>
+      
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 
@@ -65,7 +69,7 @@
                 parts of the FMCW code to enable the sensing.</p>
             <p>The human gestures part of this lab is based on an MIT 6.808 project in Spring 2021 by Cooper Jones,
                 Willie Zhu and Jan Wojcik.</p>
-            <p>Start by downloading the <a href="FMCW.zip">Jupyter notebook</a> for this lab.</p>
+            <p>Start by downloading the <a href="code/FMCW.zip">Jupyter notebook</a> for this lab.</p>
             <p> <strong>Known problem: </strong>Do not use Google Colab to run the .ipynb. The PortAudio library cannot
                 be used in Colab.</p>
         </div>
@@ -256,10 +260,12 @@
 
         <p>After that, we are ready to monitor the breathing. Before playing the sound, use your hands
             to hold the mac so that its speaker is <b>directly facing your chest</b>. Keep the mac about
-            <b>40 cm</b> away from your chest.
+            <b>40 cm</b> away from your chest and hold it still.
         </p>
+        <img src="images/front.png" alt="The front side of how to hold the mac" style="width:420px; height:260px;"/>
+        <img src="images/back.png" alt="The back side of how to hold the mac" style="width:420px; height:260px;"/>
 
-        Do the following breathing patterns separately and save the screenshots:
+        <br><br><b>Tasks:</b> Do the following breathing patterns separately and save the screenshots:
         <ol>
             <li>Inhale and exhale for two times. Then hold your breath to the end</li>
             <li>Inhale, hold your breath, exhale, and hold your breath to the end</li>
@@ -268,6 +274,17 @@
         <p><b>Note:</b> Keeping the mac 40 cm away from the chest should result in <code>range_bin=15</code>.
             If you do not see the expected breathing plot, you can change the "range_bin"
             variable to nearby integers (e.g., plus minus 5) to search for the plot.
+        </p>
+
+        <p>We also provide pre-recorded data for this task. If you still didn't see the expected breathing plot
+            after trying several times, you can download them (<a href="code/breathing_1_rangebin=18.npz">breathing_1_rangebin=18.npz</a>
+            and <a href="code/breathing_2_rangebin=21.npz">breathing_2_rangebin=21.npz</a>) and use the following code
+            to load them:
+            <pre><code class="python"># load pre-recorded data
+recorded_data = np.load('breathing_1_rangebin=18.npz')
+tx = recorded_data['tx']
+rx = recorded_data['rx']</code></pre>
+Rembember to change the variable <code>range_bin</code> to the one indicated in the file name (i.e., 18 for this file).
         </p>
     </div>
     <br>
